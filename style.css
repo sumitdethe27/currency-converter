@@ -1,0 +1,126 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+::-webkit-scrollbar{
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #ff6600, #ff3399); /* Gradient background color */
+  border-radius: 6px; /* Rounded corners for the thumb */
+  border: 3px solid #333; /* Border around the thumb */
+}
+.main{
+   height: 100vh;
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.data{
+  display: grid;
+  place-content: center;
+  height: 100px;
+}
+.convert{
+  display: grid;
+  place-content: center;
+  background-color: #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  z-index: 100;
+
+}
+.container{
+    position: relative;
+ 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    justify-content: center;
+}
+.text-1,.text-2{
+  padding: 10px;
+  border: none;
+  z-index: -1;
+}
+.text-1:focus,.text-2:focus{
+  outline: none;
+  border: none;
+}
+.firstcurr,.secondcurr{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  transform: translateY(100px);
+}
+.select-1,.select-2 {
+  z-index: 99;
+    width: 270px;
+    font-size: 16px;
+    height: auto;
+    border: .3px solid #ccc;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    margin-bottom: 2px;
+    border-bottom:  none;
+  }
+  /* Add hover and focus styles */
+  .select-2:hover,.select-1:hover {
+    border: 3px solid #007bff;
+  }
+  .select-2:focus,.select-1:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    border-radius: 3px;
+  }
+  .options-2,.options-1 {/* Remove default styles */
+    z-index: 90;
+    width: 270px;
+    background-color: white;
+    border: 1px solid #ccc;
+    transition: all 0.3s, opacity 0.3s;
+    /* Ensure the options are on top of other content */
+    visibility: hidden;
+    opacity: 0;
+    gap: 2rem;
+    height: 200px;
+    overflow-x: hidden; 
+    overflow-y: scroll; 
+    }
+    .options-1.hidden{
+      visibility: visible;
+      opacity: 1;
+    }
+    .options-2.hidden{
+      visibility:visible;
+      opacity: 1;
+    }
+    
+    
+  .option-1,.option-2{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    border-bottom: 1px solid gainsboro;
+    align-items: center;
+    justify-content: start;
+    padding: 10px;
+
+  }
+  .option-1:hover,.option-2:hover {
+    border: 3px solid #91c0f3;
+  }
+
+  .option-1:focus,.option-2:focus {
+    border-color: #91c0f3;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    border-radius: 3px;
+  }
+  .amount{
+    padding: 10px;
+  }
