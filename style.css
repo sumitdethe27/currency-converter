@@ -1,7 +1,10 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
+
 ::-webkit-scrollbar{
   width: 8px;
 }
@@ -16,7 +19,7 @@
     display:flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 .data{
   display: grid;
@@ -31,7 +34,7 @@
   padding: 12px;
   cursor: pointer;
   z-index: 100;
-
+  transition:all 0.5s ease ;
 }
 .container{
     position: relative;
@@ -57,6 +60,7 @@
   flex-direction: column;
   justify-content: center;
   transform: translateY(100px);
+  z-index:  1;;
 }
 .select-1,.select-2 {
   z-index: 99;
@@ -79,6 +83,8 @@
     border-radius: 3px;
   }
   .options-2,.options-1 {/* Remove default styles */
+    display: flex;
+    flex-direction: column;
     z-index: 90;
     width: 270px;
     background-color: white;
@@ -123,4 +129,47 @@
   }
   .amount{
     padding: 10px;
+    transition: all 0.3s ease-out;
+    margin-bottom: 30px;
+  }
+  .convert.move{
+    transform: translateX(282px);
+  }
+  @media (max-width:650px) {
+    .container{
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    .firstcurr,.secondcurr{
+      transform: translateY(50px);
+     
+    }
+    .select-1,.select-2{
+      width: 100px;
+    }
+    .options-1,.options-2{
+      width: 100px;
+      gap: 10px;
+    }
+    
+    .arrow{
+      position: absolute;
+      top: 60px;
+      left: 113px;    }
+    .main{
+      justify-content: flex-start;
+
+    }
+    .amount{
+      transform: translateY(-100px);
+      width: 150px;
+      margin-bottom: 30px;
+      border: 1px solid gainsboro;
+      border-bottom: none;
+    }
+    .amount:focus{
+      
+      border-color: #007bff;
+    }
+    
   }

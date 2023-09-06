@@ -6,6 +6,7 @@ redirect:"follow",
 headers
 
 }
+let currencyList={};
 document.addEventListener('DOMContentLoaded',async function(){
 
   
@@ -17,12 +18,20 @@ document.addEventListener('DOMContentLoaded',async function(){
         let option1=document.querySelector('.options-1');
         let option2= document.querySelector('.options-2');
         let curr=data.symbols;
+        currencyList=curr
         let fromEntries=Object.entries(curr);
+        console.log(currencyList);
         fromEntries.forEach(([key,value])=>{
-         option1.innerHTML+=`<div class="option-1"> <span id="symbol">${key}</span>
-          <span id="symbol-name">${value}</span>  </div>`
-          option2.innerHTML+=`<div class="option-2"> <span id="symbol">${key}</span>
-          <span id="symbol-name">${value}</span>  </div>`
+         if(window.innerWidth<=600){
+
+            option1.innerHTML+=`<div class="option-1"> <span id="symbol">${key}</span></div>`
+            option2.innerHTML+=`<div class="option-2"> <span id="symbol">${key}</span></div>`
+         }else{
+            option1.innerHTML+=`<div class="option-2"> <span id="symbol">${key}</span>
+            <span id="symbol-name">${value}</span>  </div>`
+            option2.innerHTML+=`<div class="option-2"> <span id="symbol">${key}</span>
+            <span id="symbol-name">${value}</span>  </div>`
+         }
             
         })
 
@@ -41,23 +50,37 @@ document.addEventListener('DOMContentLoaded',async function(){
       
       option1.forEach((item)=>{
       item.addEventListener("click",()=>{
-        check(options1)
+        check(options1);
             let symbol=item.querySelector('#symbol');
-            let symbolName=item.querySelector('#symbol-name');
+
+            input1.textContent=`${symbol.textContent}`; 
+           if(window.innerWidth>=600){
+
+              let symbolName=item.querySelector('#symbol-name');
+              input1.textContent=`  ( ${symbolName.textContent})`; 
+  
+            }
            
-            input1.textContent=`${symbol.textContent}  ( ${symbolName.textContent})`; 
 
          })
          
       })
       option2.forEach((item)=>{
+         
          item.addEventListener("click",()=>{
-            let symbol=item.querySelector('#symbol');
-            let symbolName=item.querySelector('#symbol-name');
             
-            console.log(item)
-            input2.textContent=`${symbol.textContent}  ( ${symbolName.textContent})`; 
-            check(options2)
+            check(options2);
+            let symbol=item.querySelector('#symbol');
+
+            input2.textContent=`${symbol.textContent}`; 
+           if(window.innerWidth>=600){
+
+              let symbolName=item.querySelector('#symbol-name');
+              input2.textContent=`  ( ${symbolName.textContent})`; 
+  
+            }
+           // document.querySelector('.convert').classList.toggle('move')
+
          })
       })
      
